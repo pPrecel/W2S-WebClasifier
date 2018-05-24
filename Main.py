@@ -1,31 +1,29 @@
 from Classifier import WebClassifier
 import WebScrapper
-import wordRepository as repo
-from jeszczenowszescrapy import startJeszczeNowszy
+import DataLoader
 
-#pages, classes = nowescrapy.loadFromExcel()
+# init data loader
+loader = DataLoader.DataLoader(verbose=True)
 
-#clf = WebClassifier()
-#clf.loadData(pages, classes)
-#clf.printWords()
+# try to load previous repository
+loader.loadRepoFromJSON('repo.json')
 
-#clf.predict(WebScrapper.scrapPage('https://en.wikipedia.org/wiki/Computer_programming'))
+# load links and categories from Excel
+loader.loadClassesAndCategoriesFromExcel(r'Categories.xlsx')
 
+# if site was not present in loader's WordRepository object, pull it here
+loader.scrapMissingSites()
 
-#---------------------------------------------------
-pages, classes = startJeszczeNowszy()
+# get data for classifier
+pages, classes = loader.getPagesAndClasses()
 
 clf = WebClassifier()
 clf.loadData(pages, classes)
-clf.printWords()
+#clf.printWords()
 
-clf.predict(WebScrapper.scrapPage('http://dawidpolap.pl/'))
+site = 'http://dawidpolap.pl/'
+print('predicting category for ',site,'...')
+clf.predict(WebScrapper.scrapPage(site))
 
-exit()
-
-r = repo.wordRepository.deserialize('repo.json')
-
-classes = r.getCategories()
-pages = []
-for c in classes:
-    pages.append(r.getAllCategoryWords(c))
+# save repo for the next time
+loader.saveToJSON('repo.json')

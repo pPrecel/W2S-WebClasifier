@@ -1,4 +1,3 @@
-import numpy
 import operator
 
 class WebClassifier:
@@ -6,8 +5,6 @@ class WebClassifier:
     def __init__(self):
         self.__words = {}
         self.__classes = {}
-
-
 
     #private methods
     def __isTabOfDictsOfInts(self, checkedData, lenOfFirstTab): # sprawdzanie czy dane to tablica slownikow tablic intow
@@ -89,6 +86,7 @@ class WebClassifier:
 
     #public methods
     def loadData(self, dictOfWords : list, tabOfClasses : list):
+
         if not isinstance(tabOfClasses, list) \
                 or not self.__isTabOfDictsOfInts(list(dictOfWords), len(tabOfClasses))\
                 or not self.__isTabOfStr(tabOfClasses):
@@ -116,10 +114,9 @@ class WebClassifier:
 
         return newDictOfWords, newDictOfClasses
 
-    def predict(self,inpitWords):
-        predOfWords = self.__predict(inpitWords)
-        for key, value in predOfWords.items():
-            print(key, ' :  ',value )
+    def predict(self, inputWords):
+        predOfWords = self.__predict(inputWords)
+        self.printFormattedScores(predOfWords)
 
     def clear(self):
         self.__init__()
@@ -130,3 +127,9 @@ class WebClassifier:
         print('class : sum of pages')
         for key, value in self.__classes.items():
             print(key,' : ', value)
+
+    def printFormattedScores(self, predOfWords):
+        s = sum(predOfWords.values())
+        sortedSc = sorted(predOfWords.items(), key=operator.itemgetter(1), reverse=True)
+        for x in sortedSc:
+            print(x[0], ' :  ', round(x[1] / s * 100, 2), '%')
