@@ -82,19 +82,7 @@ class WebClassifier:
         #self.__divideByMax(listOfPred)
         return listOfPred
 
-
-
-    #public methods
-    def loadData(self, dictOfWords : list, tabOfClasses : list):
-
-        if not isinstance(tabOfClasses, list) \
-                or not self.__isTabOfDictsOfInts(list(dictOfWords), len(tabOfClasses))\
-                or not self.__isTabOfStr(tabOfClasses):
-            raise Exception('Bad types of input data')
-
-        self.__words, self.__classes = self.fillData(dictOfWords, tabOfClasses)
-
-    def fillData(self, inWordsTab, inClassesTab):
+    def __fillData(self, inWordsTab, inClassesTab):
         newDictOfWords = {}
         newDictOfClasses = {}
 
@@ -114,9 +102,36 @@ class WebClassifier:
 
         return newDictOfWords, newDictOfClasses
 
-    def predict(self, inputWords):
+    #public methods
+    def loadData(self, dictOfWords : list, tabOfClasses : list):
+
+        if not isinstance(tabOfClasses, list) \
+                or not self.__isTabOfDictsOfInts(list(dictOfWords), len(tabOfClasses))\
+                or not self.__isTabOfStr(tabOfClasses):
+            raise Exception('Bad types of input data')
+
+        self.__words, self.__classes = self.__fillData(dictOfWords, tabOfClasses)
+
+
+
+    def predict(self, inputWords, addToData=False):
         predOfWords = self.__predict(inputWords)
         self.printFormattedScores(predOfWords)
+
+        if(addToData==True):
+            classResult = max(predOfWords.items(), key=operator.itemgetter(1))[0]
+            self.addData(inputWords, classResult)
+
+    def addData(self, inputWords, inputClass):
+        self.__classes[inputClass] += 1
+        for key in inputWords:
+            if(key in self.__words):
+                self.__words[key][list(self.__classes.keys()).index(inputClass)] += inputWords[key]
+
+            else:
+                newWord = [(int)(0) for i in range(len(self.__classes))]
+                newWord[list(self.__classes.keys()).index(inputClass)] = inputWords[key]
+                self.__words[key] = newWord
 
     def clear(self):
         self.__init__()
