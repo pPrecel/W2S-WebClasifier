@@ -5,11 +5,14 @@ class WordRepository():
 
     def __init__(self):
 
-        #dictionary of categories and arrays of dictionaries of string and int
+        # dictionary of categories and arrays of dictionaries of string and int
         self.data = dict()
 
-        #all urls
+        # all urls
         self.urls = set()
+
+        # dictionary of categories and articles count
+        self.dataBardzo = dict()
 
     # add new category. Returns True if adding succeded.
     def addCategory(self, category, verbose=False):
@@ -19,6 +22,7 @@ class WordRepository():
             return False
         else:
             self.data[category] = dict()
+            self.dataBardzo[category] = 0
             if verbose:
                 print('wordRepository::addCategory: added category "',category,'".')
             return True
@@ -84,6 +88,7 @@ class WordRepository():
             else:
                 raise KeyError('wordRepository::appendWordsInBulk: key ', type(category),' not found.')
 
+        self.dataBardzo[category] += 1
         for word, count in words.items():
             newCount = self.getWordCount(category, word, verbose=verbose) + count
             self.setWordCount(category, word, newCount)
@@ -111,4 +116,4 @@ class WordRepository():
         for c in classes:
             pages.append(self.data[c])
 
-        return pages, classes
+        return pages, self.dataBardzo
