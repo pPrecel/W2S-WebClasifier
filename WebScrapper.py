@@ -92,7 +92,7 @@ def preprocess(strings, verbose=False,
                removeTheAAn=True,
                stemming=True,
                stripTrailingNumbers=True,
-               #blacklisting=True, blacklist=[] TODO
+               removeNonAsciiWords=True,
                ):
 
     if verbose: print('preprocess: started with',len(strings),'strings')
@@ -115,7 +115,11 @@ def preprocess(strings, verbose=False,
     if removeTheAAn:
         theAAn = ['the', 'a', 'an']
         strings = [s for s in strings if s not in theAAn]
-        if verbose: print('preprocess: removeLongEntries:', len(strings),'strings')
+        if verbose: print('preprocess: removeTheAAn:', len(strings),'strings')
+
+    if removeNonAsciiWords:
+        strings = [s for s in strings if isAscii(s)]
+        if verbose: print('preprocess: removeNonAsciiWords:',len(strings),'strings')
 
     if stripTrailingPunctuation:
         for i, s in enumerate(strings):
@@ -154,6 +158,10 @@ def preprocess(strings, verbose=False,
     return strings
 
 
+def isAscii(s):
+    return all(ord(c) < 128 for c in s)
+
+
 def countPairs(strings):
     d = dict()
 
@@ -182,9 +190,9 @@ def showPairs(dicti, order='count', ascending=False, hideWithLessThan=0):
             if v[1] > hideWithLessThan:
                 print(v)
     elif order == 'alphabet':
-        for key in sorted(pairs, reverse=not ascending):
-            if pairs[key] > hideWithLessThan:
-                print(key,': ',pairs[key])
+        for key in sorted(dicti, reverse=not ascending):
+            if dicti[key] > hideWithLessThan:
+                print(key,': ',dicti[key])
     else:
         print('showPairs: unknown order: <',order,'>!')
 
