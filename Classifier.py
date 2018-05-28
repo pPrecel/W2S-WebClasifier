@@ -37,11 +37,13 @@ class WebClassifier:
                     newDict[key].append(0)
         return newDict
 
-    def __isDictOfStr(self, checkedData):
+    def __isDictOfInt(self, checkedData):
         if not isinstance(checkedData, dict):
+            print('nie bo nie jest dictem')
             return False
         for key in checkedData:
-            if not isinstance(checkedData[key], str):
+            if not isinstance(checkedData[key], int):
+                print('nie bo ',checkedData[key],'nie jest intem')
                 return False
         return True
 
@@ -87,6 +89,7 @@ class WebClassifier:
         newDictOfWords = {}
         newDictOfClasses = {}
 
+        # todo lepiej
         for label in inClassesTab:
             newDictOfClasses[label] = inClassesTab[label]
 
@@ -94,20 +97,21 @@ class WebClassifier:
             for word in dic:
                 newDictOfWords[word] = [(int)(0) for i in range(len(newDictOfClasses))]
 
-        for i in range(len(inWordsTab)):
-            for word in inWordsTab[i]:
-                index = list(newDictOfClasses.keys()).index(inClassesTab[i])
-                newDictOfWords[word][index] += inWordsTab[i][word]
+        for i in range(len(newDictOfClasses)):
+            for key in inWordsTab[i]:
+                    newDictOfWords[key][i] += inWordsTab[i][key]
+
 
         return newDictOfWords, newDictOfClasses
 
     #public methods
-    def loadData(self, dictOfWords : list, tabOfClasses : list):
-
-        if not isinstance(tabOfClasses, list) \
-                or not self.__isTabOfDictsOfInts(list(dictOfWords), len(tabOfClasses))\
-                or not self.__isDictOfStr(tabOfClasses):
-            raise Exception('Bad types of input data')
+    def loadData(self, dictOfWords : list, tabOfClasses : dict):
+        if not isinstance(tabOfClasses, dict):
+            raise Exception('Bad types of input data (1)')
+        if not self.__isTabOfDictsOfInts(list(dictOfWords), len(tabOfClasses)):
+            raise Exception('Bad types of input data (2)')
+        if not self.__isDictOfInt(tabOfClasses):
+            raise Exception('Bad types of input data (3)')
 
         self.__words, self.__classes = self.__fillData(dictOfWords, tabOfClasses)
 
@@ -147,3 +151,20 @@ class WebClassifier:
         sortedSc = sorted(predOfWords.items(), key=operator.itemgetter(1), reverse=True)
         for x in sortedSc:
             print(x[0], ' :  ', round(x[1] / s * 100, 2), '%')
+
+    def saveToDataToFile(self, filepath):
+        file = open(filepath, 'w')
+
+        for key, value in self.__classes.items():
+            file.write(key+':'+str(value)+'\n')
+        file.write('\n')
+        for key, value in self.__words.items():
+            try:
+                file.write(str(key))
+            except:
+                file.write('ERROR')
+            for elem in value:
+                file.write(' '+str(elem))
+            file.write('\n')
+
+        file.close()

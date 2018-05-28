@@ -17,13 +17,14 @@ loader.scrapMissingSites()
 # get data for classifier
 pages, classes = loader.getPagesAndClasses()
 
+# save repo for the next time
+loader.saveToJSON('repo.json')
+
 clf = WebClassifier()
 clf.loadData(pages, classes)
-#clf.printWords()
+clf.saveToDataToFile('wyniki.txt')
 
 site = 'http://dawidpolap.pl/'
 print('predicting category for ',site,'...')
 clf.predict(WebScrapper.scrapPage(site))
 
-# save repo for the next time
-loader.saveToJSON('repo.json')
