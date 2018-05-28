@@ -5,6 +5,7 @@ class WebClassifier:
     def __init__(self):
         self.__words = {}
         self.__classes = {}
+        self.__performanceWords = {}
 
     #private methods
     def __isTabOfDictsOfInts(self, checkedData, lenOfFirstTab): # sprawdzanie czy dane to tablica slownikow tablic intow
@@ -36,9 +37,11 @@ class WebClassifier:
                     newDict[key].append(0)
         return newDict
 
-    def __isTabOfStr(self, checkedData):
-        for line in checkedData:
-            if not isinstance(line,str):
+    def __isDictOfStr(self, checkedData):
+        if not isinstance(checkedData, dict):
+            return False
+        for key in checkedData:
+            if not isinstance(checkedData[key], str):
                 return False
         return True
 
@@ -72,11 +75,9 @@ class WebClassifier:
             index = list(self.__classes.keys()).index(key)
             sumOfValues = 0
             for word in inputDict:
-                #print('Word: ', word) #------------------------------
                 if word in self.__words:
                     value = self.__getValue(inputDict, word, index) / self.__classes[key]
                     sumOfValues += value
-                    #print(inputDict[word], '*', self.__words[word][i], '/', sum(self.__words[word]), '=', value)  # ----------------
             listOfPred[key] = sumOfValues
 
         #self.__divideByMax(listOfPred)
@@ -87,9 +88,7 @@ class WebClassifier:
         newDictOfClasses = {}
 
         for label in inClassesTab:
-            newDictOfClasses[label] = (int)(0)
-        for label in inClassesTab:
-            newDictOfClasses[label] += 1
+            newDictOfClasses[label] = inClassesTab[label]
 
         for dic in inWordsTab:
             for word in dic:
@@ -107,7 +106,7 @@ class WebClassifier:
 
         if not isinstance(tabOfClasses, list) \
                 or not self.__isTabOfDictsOfInts(list(dictOfWords), len(tabOfClasses))\
-                or not self.__isTabOfStr(tabOfClasses):
+                or not self.__isDictOfStr(tabOfClasses):
             raise Exception('Bad types of input data')
 
         self.__words, self.__classes = self.__fillData(dictOfWords, tabOfClasses)
