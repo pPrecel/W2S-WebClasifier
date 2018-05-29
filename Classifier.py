@@ -146,7 +146,12 @@ class WebClassifier:
         for key, value in self.__classes.items():
             print(key,' : ', value)
 
-    def printFormattedScores(self, predOfWords):
+    def printFormattedScores(self, predOfWords, dramatic=True):
+
+        if dramatic:
+            for key in predOfWords:
+                predOfWords[key] **= 2;
+
         s = sum(predOfWords.values())
         sortedSc = sorted(predOfWords.items(), key=operator.itemgetter(1), reverse=True)
         for x in sortedSc:

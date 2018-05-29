@@ -1,4 +1,5 @@
 import pandas
+import math
 
 
 class ExcelReader:
@@ -29,6 +30,19 @@ class ExcelReader:
 
         # foreach loaded pair
         for i in range(len(data.values)):
+
+
+            # check
+            if ExcelReader.isLoadedWordInvalid(links[i]):
+                if verbose:
+                    print('ExcelReader::read: no value for link, skipping')
+                continue;
+            if ExcelReader.isLoadedWordInvalid(categories[i]):
+                if verbose:
+                    print('ExcelReader::read: no value for category, skipping!')
+                continue;
+
+
             # add category IF NOT EXISTS
             if categories[i] not in pairs.keys():
                 pairs[categories[i]] = list()
@@ -45,3 +59,6 @@ class ExcelReader:
             print('total: ',s)
 
         return pairs
+
+    def isLoadedWordInvalid(word):
+        return isinstance(word, float) and math.isnan(word)
