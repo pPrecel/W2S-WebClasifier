@@ -226,6 +226,7 @@ def scrapPage(url, verbose=False):
     if verbose:
         print(url)
     soup = loadSoup(url)
+
     #print('loaded')
     soup = sanitize(soup)
     #split strings by spaces and newlines - spltting by '/' maybe? EDIT or '='?
@@ -237,7 +238,8 @@ def scrapPage(url, verbose=False):
     if verbose:
         print('|')
 
-    return pairs
+    imageSoup = loadSoup(url, 'lxml')
+    return pairs, getImagesCount(imageSoup)
 
 url = 'https://stackoverflow.com/questions/24878174/how-to-count-digits-letters-spaces-for-a-string-in-python'
 url = 'https://www.nytimes.com/interactive/2018/03/22/magazine/voyages-worlds-greatest-hitchhiker.html'
@@ -260,55 +262,4 @@ url = 'https://stackoverflow.com/questions/24878174/how-to-count-digits-letters-
 url = 'http://scp-wiki.wikidot.com/scp-355'
 
 urllib3.disable_warnings()
-
-# soup = loadSoup(url)
-# video = soup.find_all("iframe") # bieda. Jeśli mamy miniaturki filmów, to są one tylko podglądami obrazkowymi
-# print(video)
-# exit()
-#
-#
-# urls = [
-# 'https://stackoverflow.com/questions/24878174/how-to-count-digits-letters-spaces-for-a-string-in-python',
-# 'https://www.nytimes.com/interactive/2018/03/22/magazine/voyages-worlds-greatest-hitchhiker.html',
-# 'http://www.vitoshacademy.com/c-wpf-23-well-written-wpf-control-examples/#14',
-# 'https://medium.com/@jamesbridle/something-is-wrong-on-the-internet-c39c471271d2',
-# 'https://medium.freecodecamp.org/we-fired-our-top-talent-best-decision-we-ever-made-4c0a99728fde',
-# 'https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings',
-# 'http://thedailywtf.com/articles/What_Is_Truth_0x3f_',
-# 'http://www.scp-wiki.net/scp-504',
-# 'https://www.linkedin.com/pulse/why-outsourcing-your-poland-ruin-life-steve-sydenham/',
-# 'https://dialogwheel.com/2013/11/27/cutting-into-cry-of-fear-alienation-and-identity/',
-# 'https://medium.com/refactoring-ui/7-practical-tips-for-cheating-at-design-40c736799886',
-# 'https://mydickband.bandcamp.com/',
-# 'https://unix.stackexchange.com/questions/405783/why-does-man-print-gimme-gimme-gimme-at-0030',
-# 'https://gist.github.com/joineral32/ba144be3a696f2d25c66',
-# 'https://github.com/ErisBlastar/cplusequality',
-# 'https://stackoverflow.com/questions/24878174/how-to-count-digits-letters-spaces-for-a-string-in-python'
-# ]
-#
-#
-# for url in urls:
-#     print('loading [image] from ',url ,'...')
-#     imageSoup = loadSoup(url, 'lxml')
-#     print('loaded [image]')
-#     print(getImagesCount(imageSoup)) #fajne
-#     print(getImageSizes(imageSoup)) #bieda bardzo, malo kto daje wymiary do obrazków
-#     #print(getImageLinks(imageSoup)) #fajne
-# exit()
-
-#load and clear up HTML soup
-# print('loading...')
-# soup = loadSoup(url)
-# print('loaded')
-# soup = sanitize(soup, verbose=True)
-# #split strings by spaces and newlines - spltting by '/' maybe? EDIT or '='?
-# rawStrings = splitStrings(soup)
-# #apply filters
-# processedStrings = preprocess( rawStrings, verbose=True, removeLongEntries=True )
-# #get pairs (word, count)
-# pairs = countPairs( processedStrings )
-#
-# showPairs(pairs, hideWithLessThan=2) # zmniejszyłem sobie, żeby nie scrollować tyle
-#
-
 

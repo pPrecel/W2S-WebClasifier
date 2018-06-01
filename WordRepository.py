@@ -12,7 +12,10 @@ class WordRepository():
         self.urls = set()
 
         # dictionary of categories and articles count
-        self.dataBardzo = dict()
+        self.imagesCounts = dict()
+
+        # dictionary of categories and images count
+        self.articlesCounts = dict()
 
     # add new category. Returns True if adding succeded.
     def addCategory(self, category, verbose=False):
@@ -22,7 +25,8 @@ class WordRepository():
             return False
         else:
             self.data[category] = dict()
-            self.dataBardzo[category] = 0
+            self.articlesCounts[category] = 0
+            self.imagesCounts[category] = 0
             if verbose:
                 print('wordRepository::addCategory: added category "',category,'".')
             return True
@@ -71,7 +75,7 @@ class WordRepository():
         return self.data[category]
 
     # add words of category
-    def appendInBulk(self, url, category, words, autoAddCategory=True, verbose=False):
+    def appendInBulk(self, url, category, words, imagesCount, autoAddCategory=True, verbose=False):
         if url in self.urls:
             if verbose:
                 print('Url "', url,'" has been already added, skipping')
@@ -88,7 +92,8 @@ class WordRepository():
             else:
                 raise KeyError('wordRepository::appendWordsInBulk: key ', type(category),' not found.')
 
-        self.dataBardzo[category] += 1
+        self.articlesCounts[category] += imagesCount
+        self.imagesCounts[category] += 1
         for word, count in words.items():
             newCount = self.getWordCount(category, word, verbose=verbose) + count
             self.setWordCount(category, word, newCount)
@@ -109,11 +114,11 @@ class WordRepository():
             json = f.read()
         return jsonpickle.decode(json)
 
-    # return dictionaries<word, count> and categories
-    def getPagesAndClasses(self):
-        classes = list(self.data.keys())
+    # return dictionaries<word, count>,  categories and dictionaries<category, word count>
+    def getPagesClassesAndImagesCount(self):
         pages = []
-        for c in classes:
+
+        for c in self.data.keys():
             pages.append(self.data[c])
 
-        return pages, self.dataBardzo
+        return pages, self.articlesCounts, self.imagesCounts

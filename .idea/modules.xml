@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/W2S-WebClasifier.iml" filepath="$PROJECT_DIR$/.idea/W2S-WebClasifier.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/cwiczeniaZML.iml" filepath="$PROJECT_DIR$/.idea/cwiczeniaZML.iml" />
     </modules>
   </component>

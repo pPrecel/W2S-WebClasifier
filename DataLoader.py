@@ -54,10 +54,10 @@ class DataLoader:
         if self.verbose:
             print('DataLoader::scrapMissing: found',unscrappedCount,'unscrapped urls')
 
-        resultUrls, resultPages, resultClasses = self.scrapFromNet(unscrappedDictionary)
+        resultUrls, resultPages, resultImagesCount, resultClasses = self.scrapFromNet(unscrappedDictionary)
 
         for i in range(len(resultPages)):
-            self.repository.appendInBulk(resultUrls[i], resultClasses[i], resultPages[i])
+            self.repository.appendInBulk(resultUrls[i], resultClasses[i], resultPages[i], resultImagesCount[i])
 
     # download sites from given dictionary
     def scrapFromNet(self, dicti):
@@ -67,7 +67,7 @@ class DataLoader:
         if len(flat) == 0:
             if self.verbose:
                 print('DataLoader::scrapFromNet: nothing to do here, skipping')
-            return list(), list(), list()
+            return list(), list(), list(), list()
 
         if self.verbose:
             print('DataLoader::scrapFromNet: started loading words')
@@ -78,15 +78,16 @@ class DataLoader:
         for i in range(len(flat)):
             workQueue.put((i,flat[i]))
 
-        def crawl(q, resultPages, resultClasses, resultUrls):
+        def crawl(q, resultPages, resultImagesCount, resultClasses, resultUrls):
             while not q.empty():
                 work = q.get()
 
                 category = work[1][0]
                 url = work[1][1]
-                data = WebScrapper.scrapPage(url, self.verbose)
+                pageData, imagesCount = WebScrapper.scrapPage(url, self.verbose)
 
-                resultPages[work[0]] = data
+                resultPages[work[0]] = pageData
+                resultImagesCount[work[0]] = imagesCount
                 resultClasses[work[0]] = category
                 resultUrls[work[0]] = url
 
@@ -98,8 +99,9 @@ class DataLoader:
         resultPages = [0] * len(flat)
         resultClasses = [0] * len(flat)
         resultUrls = [0] * len(flat)
+        resultImagesCount = [0] * len(flat)
         for i in range(num_threads):
-            worker = threading.Thread(target=crawl, args=(workQueue, resultPages, resultClasses, resultUrls))
+            worker = threading.Thread(target=crawl, args=(workQueue, resultPages, resultImagesCount, resultClasses, resultUrls))
             worker.setDaemon(True)
             worker.start()
 
@@ -109,7 +111,7 @@ class DataLoader:
         if self.verbose:
             print('DataLoader::scrapFromNet: finished, time elapsed:',round(end - start, 3), 's')
 
-        return resultUrls, resultPages, resultClasses
+        return resultUrls, resultPages, resultImagesCount, resultClasses
 
     # ...
     def flattenDictionary(self, dictionary):
@@ -124,5 +126,5 @@ class DataLoader:
         self.repository.serialize(fileName)
 
     # get learning data
-    def getPagesAndClasses(self):
-        return self.repository.getPagesAndClasses()
+    def getPagesClassesAndImagesCount(self):
+        return self.repository.getPagesClassesAndImagesCount()
