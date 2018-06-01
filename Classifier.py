@@ -78,7 +78,7 @@ class WebClassifier:
         for key in inputDict:
             inputDict[key] = inputDict[key] / inputDict[maxOfDict]
 
-    def __predict(self, inputDict):
+    def __predict(self, inputDict, inputImages):
         listOfPred = {}
 
         for key in self.__classes:
@@ -88,7 +88,16 @@ class WebClassifier:
                 if word in self.__words:
                     value = self.__getValue(inputDict, word, index) / self.__classes[key]
                     sumOfValues += value
+
+            sumOfWords = sum([value[index] for key, value in self.__words.items()])
+            wordsValue = sumOfWords / (sumOfWords + self.__images[key])
+            imagesValue = self.__images[key] / (sumOfWords + self.__images[key])
+
+            sumOfValues *= wordsValue
+            sumOfValues += (inputImages * imagesValue)
             listOfPred[key] = sumOfValues
+
+
 
         #self.__divideByMax(listOfPred)
         return listOfPred
@@ -100,8 +109,8 @@ class WebClassifier:
 
         for label in inClassesTab:
             newDictOfClasses[label] = inClassesTab[label]
-        for label in inImagesTab:
-            newDictOfImages[label] = inImagesTab[label]
+            index = list(inClassesTab.keys()).index(label)
+            newDictOfImages[label] = inImagesTab[index]
 
         for dic in inWordsTab:
             for word in dic:
@@ -114,30 +123,37 @@ class WebClassifier:
         return newDictOfWords, newDictOfClasses, newDictOfImages
 
     #public methods
-    def loadData(self, dictOfWords : list, tabOfClasses : dict, tabOfImageInfo : list):
-        if not isinstance(tabOfClasses, dict):
+    def loadData(self, dictOfWords : list, dictOfClasses : dict, tabOfImageInfo : list):
+        if not isinstance(dictOfClasses, dict):
             raise Exception('Bad types of input data (1). dictOfWords must be a dict')
-        if not self.__isTabOfDictsOfInts(list(dictOfWords), len(tabOfClasses)):
+        if not self.__isTabOfDictsOfInts(list(dictOfWords), len(dictOfClasses)):
             raise Exception('Bad types of input data (2). dictOfWords must be a tab of dicts of ints and have this same len like tabOfClasses')
-        if not self.__isDictOfInt(tabOfClasses):
-            raise Exception('Bad types of input data (3). tabOfClasses must be a dict of ints')
-        if not self.__isDictOfInt(tabOfImageInfo):
-            raise Exception('Bad types of input data (4). tabOfImageInfo must be a dict of ints')
+        if not self.__isDictOfInt(dictOfClasses):
+            raise Exception('Bad types of input data (3). dictOfClasses must be a dict of ints')
+        if not self.__isTabOfInts(tabOfImageInfo):
+            raise Exception('Bad types of input data (4). tabOfImageInfo must be a tab of ints')
 
-        self.__words, self.__classes, self.__images = self.__fillData(dictOfWords, tabOfClasses, tabOfImageInfo)
+        self.clear()
+        self.__words, self.__classes, self.__images = self.__fillData(dictOfWords, dictOfClasses, tabOfImageInfo)
 
 
 
-    def predict(self, inputWords, addToData=False):
-        predOfWords = self.__predict(inputWords)
+    def predict(self, inputWords, inputImages, addToData=False):
+        predOfWords = self.__predict(inputWords, inputImages)
         self.printFormattedScores(predOfWords)
 
         if(addToData==True):
             classResult = max(predOfWords.items(), key=operator.itemgetter(1))[0]
-            self.addData(inputWords, classResult)
+            self.addData(inputWords, inputImages, classResult)
 
-    def addData(self, inputWords, inputClass):
-        self.__classes[inputClass] += 1
+    def addData(self, inputWords,inputImages, inputClass):
+        if inputClass in self.__classes:
+            self.__classes[inputClass] += 1
+            self.__images[inputClass] += inputImages
+        else:
+            self.__classes[inputClass] = 1
+            self.__images[inputClass] = inputImages
+
         for key in inputWords:
             if(key in self.__words):
                 self.__words[key][list(self.__classes.keys()).index(inputClass)] += inputWords[key]
@@ -178,7 +194,7 @@ class WebClassifier:
 
         file.write('images:\n')
         for key, value in self.__images.items():
-            file.write(key+':'+value+'\n')
+            file.write(key+':'+str(value)+'\n')
         file.write('\n')
 
         file.write('worlds:\n')
