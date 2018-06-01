@@ -84,7 +84,8 @@ class DataLoader:
 
                 category = work[1][0]
                 url = work[1][1]
-                pageData, imagesCount = WebScrapper.scrapPage(url, self.verbose)
+
+                pageData, imagesCount = WebScrapper.Scrapper().scrapPage(url, self.verbose)
 
                 resultPages[work[0]] = pageData
                 resultImagesCount[work[0]] = imagesCount

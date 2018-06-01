@@ -1,7 +1,6 @@
 from Classifier import WebClassifier
 import WebScrapper
 import DataLoader
-from numpy.random import randint
 
 # init data loader
 loader = DataLoader.DataLoader(verbose=True)
@@ -31,7 +30,7 @@ clf.saveToDataToFile('wyniki.txt')
 
 site = 'http://dawidpolap.pl/'
 print('predicting category for ',site,'...')
-data = WebScrapper.scrapPage(site)
+data = WebScrapper.Scrapper().scrapPage(site)
 clf.predict(data[0], data[1], addToData=True) #<---- ta 20, to nic innego, jak ilosc zdjec na tej strinie
 
 clf.saveToDataToFile('wyniki2.txt')
