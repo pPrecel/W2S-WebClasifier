@@ -140,7 +140,7 @@ class WebClassifier:
 
     def predict(self, inputWords, inputImages, addToData=False):
         predOfWords = self.__predict(inputWords, inputImages)
-        self.printFormattedScores(predOfWords)
+        self.printFormattedScores(predOfWords, dramatic=False)
 
         if(addToData==True):
             classResult = max(predOfWords.items(), key=operator.itemgetter(1))[0]

@@ -5,16 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2c5d13a1-7f0a-4519-b7eb-f3da4cdcec93" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/W2S-WebClasifier.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Categories — kopia.xlsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Categories.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/Categories.xlsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Classifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/Classifier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataLoader.py" beforeDir="false" afterPath="$PROJECT_DIR$/DataLoader.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebScrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/WebScrapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WordRepository.py" beforeDir="false" afterPath="$PROJECT_DIR$/WordRepository.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wyniki.txt" beforeDir="false" afterPath="$PROJECT_DIR$/wyniki.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -32,17 +28,17 @@
     <SUITE FILE_PATH="coverage/cwiczeniaZML$ReadExcel.coverage" NAME="ReadExcel Coverage Results" MODIFIED="1525967253546" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/cwiczeniaZML$loaded.coverage" NAME="loaded Coverage Results" MODIFIED="1526891372806" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/W2S_WebClasifier$ReadExcel.coverage" NAME="ReadExcel Coverage Results" MODIFIED="1526923779989" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/W2S_WebClasifier$Main.coverage" NAME="Main Coverage Results" MODIFIED="1527870386023" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/W2S_WebClasifier$Main.coverage" NAME="Main Coverage Results" MODIFIED="1527870789143" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/cwiczeniaZML$Main__1_.coverage" NAME="Main (1) Coverage Results" MODIFIED="1526891833195" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/WAWA" />
     <SUITE FILE_PATH="coverage/cwiczeniaZML$serializationTests.coverage" NAME="serializationTests Coverage Results" MODIFIED="1526844197569" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Main.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Main.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="29" column="35" selection-start-line="29" selection-start-column="35" selection-end-line="29" selection-end-column="35" />
+            <state relative-caret-position="578">
+              <caret line="34" column="8" selection-start-line="34" selection-start-column="8" selection-end-line="34" selection-end-column="8" />
               <folding>
                 <element signature="e#0#36#0" expanded="true" />
               </folding>
@@ -50,28 +46,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WordRepository.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/WordRepository.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="780">
-              <caret line="123" column="51" selection-start-line="123" selection-start-column="51" selection-end-line="123" selection-end-column="51" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Classifier.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Classifier.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Classifier.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="121" selection-start-line="121" selection-end-line="121" />
+            <state relative-caret-position="264">
+              <caret line="150" column="40" lean-forward="true" selection-start-line="150" selection-start-column="40" selection-end-line="150" selection-end-column="40" />
               <folding>
                 <element signature="e#87#159#0" />
                 <element signature="e#311#858#0" />
-                <element signature="e#904#1074#0" />
                 <element signature="e#1167#1500#0" />
-                <element signature="e#5559#5758#0" />
-                <element signature="e#5833#6139#0" />
-                <element signature="e#6191#6844#0" />
               </folding>
             </state>
           </provider>
@@ -147,8 +130,8 @@
         <option value="$PROJECT_DIR$/WebScrapper.py" />
         <option value="$PROJECT_DIR$/DataLoader.py" />
         <option value="$PROJECT_DIR$/WordRepository.py" />
-        <option value="$PROJECT_DIR$/Classifier.py" />
         <option value="$PROJECT_DIR$/Main.py" />
+        <option value="$PROJECT_DIR$/Classifier.py" />
       </list>
     </option>
   </component>
@@ -466,16 +449,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WebScrapper.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="239" lean-forward="true" selection-start-line="239" selection-end-line="239" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/DataLoader.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -493,28 +466,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Classifier.py">
+    <entry file="file://$PROJECT_DIR$/WebScrapper.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="121" selection-start-line="121" selection-end-line="121" />
+        <state relative-caret-position="361">
+          <caret line="239" lean-forward="true" selection-start-line="239" selection-end-line="239" />
           <folding>
-            <element signature="e#87#159#0" />
-            <element signature="e#311#858#0" />
-            <element signature="e#904#1074#0" />
-            <element signature="e#1167#1500#0" />
-            <element signature="e#5559#5758#0" />
-            <element signature="e#5833#6139#0" />
-            <element signature="e#6191#6844#0" />
+            <element signature="e#0#10#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="29" column="35" selection-start-line="29" selection-start-column="35" selection-end-line="29" selection-end-column="35" />
+        <state relative-caret-position="578">
+          <caret line="34" column="8" selection-start-line="34" selection-start-column="8" selection-end-line="34" selection-end-column="8" />
           <folding>
             <element signature="e#0#36#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Classifier.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="150" column="40" lean-forward="true" selection-start-line="150" selection-start-column="40" selection-end-line="150" selection-end-column="40" />
+          <folding>
+            <element signature="e#87#159#0" />
+            <element signature="e#311#858#0" />
+            <element signature="e#1167#1500#0" />
           </folding>
         </state>
       </provider>

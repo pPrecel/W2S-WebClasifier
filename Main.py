@@ -16,21 +16,22 @@ loader.loadClassesAndCategoriesFromExcel(r'Categories.xlsx')
 loader.scrapMissingSites()
 
 # get data for classifier
-pages, classes = loader.getPagesAndClasses()
+pages, classes, images = loader.getPagesClassesAndImagesCount()
 
 # save repo for the next time
 loader.saveToJSON('repo.json')
 
 #---------
-imagePretender = [int(randint(50,500)) for x in range(len(classes))]
+#imagePretender = [int(randint(50,500)) for x in range(len(classes))] #WHAT IF I SAY THAT I NEVER SURRENDER
 #---------
 
 clf = WebClassifier()
-clf.loadData(pages, classes, imagePretender)
+clf.loadData(pages, classes, list(images.values()))
 clf.saveToDataToFile('wyniki.txt')
 
 site = 'http://dawidpolap.pl/'
 print('predicting category for ',site,'...')
-clf.predict(WebScrapper.scrapPage(site),20, addToData=True) #<---- ta 20, to nic innego, jak ilosc zdjec na tej strinie
+data = WebScrapper.scrapPage(site)
+clf.predict(data[0], data[1], addToData=True) #<---- ta 20, to nic innego, jak ilosc zdjec na tej strinie
 
 clf.saveToDataToFile('wyniki2.txt')
