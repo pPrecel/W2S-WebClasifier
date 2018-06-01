@@ -5,7 +5,7 @@ class WebClassifier:
     def __init__(self):
         self.__words = {}
         self.__classes = {}
-        self.__performanceWords = {}
+        self.__images = {}
 
     #private methods
     def __isTabOfDictsOfInts(self, checkedData, lenOfFirstTab): # sprawdzanie czy dane to tablica slownikow tablic intow
@@ -22,6 +22,14 @@ class WebClassifier:
         except Exception:
             return False
 
+        return True
+
+    def __isTabOfInts(self, inTab):
+        if not isinstance(inTab, list):
+            return False
+        for it in inTab:
+            if not isinstance(it, int):
+                return False
         return True
 
     def __sumDicts(self, inputTab): #przemienia tablice slownikow w slownik tablic
@@ -85,13 +93,15 @@ class WebClassifier:
         #self.__divideByMax(listOfPred)
         return listOfPred
 
-    def __fillData(self, inWordsTab, inClassesTab):
+    def __fillData(self, inWordsTab, inClassesTab, inImagesTab):
         newDictOfWords = {}
         newDictOfClasses = {}
+        newDictOfImages = {}
 
-        # todo lepiej
         for label in inClassesTab:
             newDictOfClasses[label] = inClassesTab[label]
+        for label in inImagesTab:
+            newDictOfImages[label] = inImagesTab[label]
 
         for dic in inWordsTab:
             for word in dic:
@@ -101,19 +111,20 @@ class WebClassifier:
             for key in inWordsTab[i]:
                     newDictOfWords[key][i] += inWordsTab[i][key]
 
-
-        return newDictOfWords, newDictOfClasses
+        return newDictOfWords, newDictOfClasses, newDictOfImages
 
     #public methods
-    def loadData(self, dictOfWords : list, tabOfClasses : dict):
+    def loadData(self, dictOfWords : list, tabOfClasses : dict, tabOfImageInfo : list):
         if not isinstance(tabOfClasses, dict):
-            raise Exception('Bad types of input data (1)')
+            raise Exception('Bad types of input data (1). dictOfWords must be a dict')
         if not self.__isTabOfDictsOfInts(list(dictOfWords), len(tabOfClasses)):
-            raise Exception('Bad types of input data (2)')
+            raise Exception('Bad types of input data (2). dictOfWords must be a tab of dicts of ints and have this same len like tabOfClasses')
         if not self.__isDictOfInt(tabOfClasses):
-            raise Exception('Bad types of input data (3)')
+            raise Exception('Bad types of input data (3). tabOfClasses must be a dict of ints')
+        if not self.__isDictOfInt(tabOfImageInfo):
+            raise Exception('Bad types of input data (4). tabOfImageInfo must be a dict of ints')
 
-        self.__words, self.__classes = self.__fillData(dictOfWords, tabOfClasses)
+        self.__words, self.__classes, self.__images = self.__fillData(dictOfWords, tabOfClasses, tabOfImageInfo)
 
 
 
@@ -155,9 +166,17 @@ class WebClassifier:
     def saveToDataToFile(self, filepath):
         file = open(filepath, 'w')
 
+        file.write('classes:\n')
         for key, value in self.__classes.items():
             file.write(key+':'+str(value)+'\n')
         file.write('\n')
+
+        file.write('images:\n')
+        for key, value in self.__images.items():
+            file.write(key+':'+value+'\n')
+        file.write('\n')
+
+        file.write('worlds:\n')
         for key, value in self.__words.items():
             try:
                 file.write(str(key))

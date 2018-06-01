@@ -20,8 +20,14 @@ pages, classes = loader.getPagesAndClasses()
 # save repo for the next time
 loader.saveToJSON('repo.json')
 
+#---------
+imagePretender = {}
+for key in classes:
+    imagePretender[key] = 0
+#---------
+
 clf = WebClassifier()
-clf.loadData(pages, classes)
+clf.loadData(pages, classes, imagePretender)
 clf.saveToDataToFile('wyniki.txt')
 
 site = 'http://dawidpolap.pl/'
