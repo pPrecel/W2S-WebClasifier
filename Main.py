@@ -34,3 +34,4 @@ data = WebScrapper.Scrapper().scrapPage(site)
 clf.predict(data[0], data[1], addToData=True) #<---- ta 20, to nic innego, jak ilosc zdjec na tej strinie
 
 clf.saveToDataToFile('wyniki2.txt')
+print(classes)

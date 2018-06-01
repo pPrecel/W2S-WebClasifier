@@ -92,8 +92,8 @@ class WordRepository():
             else:
                 raise KeyError('wordRepository::appendWordsInBulk: key ', type(category),' not found.')
 
-        self.articlesCounts[category] += imagesCount
-        self.imagesCounts[category] += 1
+        self.articlesCounts[category] += 1
+        self.imagesCounts[category] += imagesCount
         for word, count in words.items():
             newCount = self.getWordCount(category, word, verbose=verbose) + count
             self.setWordCount(category, word, newCount)
