@@ -21,9 +21,7 @@ pages, classes = loader.getPagesAndClasses()
 loader.saveToJSON('repo.json')
 
 #---------
-imagePretender = {}
-for key in classes:
-    imagePretender[key] = 0
+imagePretender = [0 for x in range(len(classes))]
 #---------
 
 clf = WebClassifier()

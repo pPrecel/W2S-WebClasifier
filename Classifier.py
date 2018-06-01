@@ -88,7 +88,17 @@ class WebClassifier:
                 if word in self.__words:
                     value = self.__getValue(inputDict, word, index) / self.__classes[key]
                     sumOfValues += value
+
+            sumOfWords = sum([value[index] for key, value in self.__words.items()])
+            wordsValue = sumOfWords / (sumOfWords + self.__images[key])
+            imagesValue = self.__images[key] / (sumOfWords + self.__images[key])
+
+            sumOfValues *= wordsValue
+            sumOfValues += (self.__images[key] * imagesValue)
+
             listOfPred[key] = sumOfValues
+
+
 
         #self.__divideByMax(listOfPred)
         return listOfPred
@@ -100,8 +110,8 @@ class WebClassifier:
 
         for label in inClassesTab:
             newDictOfClasses[label] = inClassesTab[label]
-        for label in inImagesTab:
-            newDictOfImages[label] = inImagesTab[label]
+            index = list(inClassesTab.keys()).index(label)
+            newDictOfImages[label] = inImagesTab[index]
 
         for dic in inWordsTab:
             for word in dic:
@@ -121,9 +131,10 @@ class WebClassifier:
             raise Exception('Bad types of input data (2). dictOfWords must be a tab of dicts of ints and have this same len like tabOfClasses')
         if not self.__isDictOfInt(tabOfClasses):
             raise Exception('Bad types of input data (3). tabOfClasses must be a dict of ints')
-        if not self.__isDictOfInt(tabOfImageInfo):
-            raise Exception('Bad types of input data (4). tabOfImageInfo must be a dict of ints')
+        if not self.__isTabOfInts(tabOfImageInfo):
+            raise Exception('Bad types of input data (4). tabOfImageInfo must be a tab of ints')
 
+        self.clear()
         self.__words, self.__classes, self.__images = self.__fillData(dictOfWords, tabOfClasses, tabOfImageInfo)
 
 
@@ -173,7 +184,7 @@ class WebClassifier:
 
         file.write('images:\n')
         for key, value in self.__images.items():
-            file.write(key+':'+value+'\n')
+            file.write(key+':'+str(value)+'\n')
         file.write('\n')
 
         file.write('worlds:\n')
