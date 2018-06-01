@@ -1,6 +1,7 @@
 from Classifier import WebClassifier
 import WebScrapper
 import DataLoader
+from numpy.random import randint
 
 # init data loader
 loader = DataLoader.DataLoader(verbose=True)
@@ -21,7 +22,7 @@ pages, classes = loader.getPagesAndClasses()
 loader.saveToJSON('repo.json')
 
 #---------
-imagePretender = [0 for x in range(len(classes))]
+imagePretender = [int(randint(50,500)) for x in range(len(classes))]
 #---------
 
 clf = WebClassifier()
@@ -30,5 +31,6 @@ clf.saveToDataToFile('wyniki.txt')
 
 site = 'http://dawidpolap.pl/'
 print('predicting category for ',site,'...')
-clf.predict(WebScrapper.scrapPage(site))
+clf.predict(WebScrapper.scrapPage(site),20, addToData=True) #<---- ta 20, to nic innego, jak ilosc zdjec na tej strinie
 
+clf.saveToDataToFile('wyniki2.txt')
