@@ -1,5 +1,5 @@
 from stemming.porter2 import stem
-from collections import Counter
+from Utilities import Utility
 import bs4
 import urllib3
 import requests
@@ -43,12 +43,6 @@ class Scrapper:
                 for s in ss.split():
                     strings.append(s)
         return strings
-
-    # return content of digits in a string
-    def getNumericContent(self, string):
-        numbersCount = sum(c.isdigit() for c in string)
-        return numbersCount / len(string)
-
 
     # https://gist.github.com/braveulysses/120193
     def sanitize(self, soup, verbose=False, additional_tags=None):
@@ -111,7 +105,7 @@ class Scrapper:
             strings = [s.lower() for s in strings]
 
         if removeNumericStrings:
-            strings = [s for s in strings if self.getNumericContent(s) < stringsRemovalThreshold]
+            strings = [s for s in strings if Utility.getNumericContent(s) < stringsRemovalThreshold]
             if verbose: print('preprocess: removeNumbers:',len(strings),'strings')
 
         if removeLinks:
@@ -128,7 +122,7 @@ class Scrapper:
             if verbose: print('preprocess: removeTheAAn:', len(strings),'strings')
 
         if removeNonAsciiWords:
-            strings = [s for s in strings if self.isAscii(s)]
+            strings = [s for s in strings if Utility.isAscii(s)]
             if verbose: print('preprocess: removeNonAsciiWords:',len(strings),'strings')
 
         if stripTrailingPunctuation:
@@ -167,39 +161,6 @@ class Scrapper:
 
         return strings
 
-
-    # check if character is ascii
-    def isAscii(self, s):
-        return all(ord(c) < 128 for c in s)
-
-    # count word occurences in list
-    def countPairs(self, strings):
-        return dict(Counter(strings))
-
-    # used for sorting by items count (value in dictionary)
-    def itemgetter(self, *items):
-        if len(items) == 1:
-            item = items[0]
-            def g(obj):
-                return obj[item]
-        else:
-            def g(obj):
-                return tuple(obj[item] for item in items)
-        return g
-
-    # used for debugging: show scrapped pairs
-    def showPairs(self, dicti, order='count', ascending=False, hideWithLessThan=0):
-        if order == 'count':
-            for v in sorted(dicti.items(), key=self.itemgetter(1), reverse=not ascending):
-                if v[1] > hideWithLessThan:
-                    print(v)
-        elif order == 'alphabet':
-            for key in sorted(dicti, reverse=not ascending):
-                if dicti[key] > hideWithLessThan:
-                    print(key,': ',dicti[key])
-        else:
-            print('showPairs: unknown order: <',order,'>!')
-
     # get count of 'img' tags in HTML soup
     def getImagesCount(self, imageSoup):
         image_tags = imageSoup.findAll('img')
@@ -234,7 +195,7 @@ class Scrapper:
         #apply filters
         processedStrings = self.preprocess( rawStrings, removeLongEntries=True )
         #get pairs (word, count)
-        pairs = self.countPairs( processedStrings )
+        pairs = Utility.countPairs( processedStrings )
         if verbose:
             print('|')
 

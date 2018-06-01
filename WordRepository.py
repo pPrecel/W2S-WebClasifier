@@ -1,5 +1,5 @@
 import jsonpickle
-
+from Utilities import TypeValidator
 
 class WordRepository():
 
@@ -19,7 +19,7 @@ class WordRepository():
 
     # add new category. Returns True if adding succeded.
     def addCategory(self, category, verbose=False):
-        if not isinstance(category, str):
+        if not TypeValidator.isString(category):
             raise ValueError('wordRepository::addCategory: expected a string, got', type(category), '.')
         if category in self.data:
             return False
@@ -37,9 +37,9 @@ class WordRepository():
 
     # sets count of given word from given category. Auto adds new category if it doesn't exist
     def setWordCount(self, category, word, count, verbose=False):
-        if not isinstance(category, str):
+        if not TypeValidator.isString(category):
             raise ValueError('wordRepository::addWord: expected a string for [category], got', type(category), '.')
-        if not isinstance(word, str):
+        if not TypeValidator.isString(word):
             raise ValueError('wordRepository::addWord: expected a string for [word], got', type(word),' .')
 
         if category not in self.data:
@@ -49,9 +49,9 @@ class WordRepository():
 
     # returns count of given word from given category
     def getWordCount(self, category, word, verbose=False):
-        if not isinstance(category, str):
+        if not TypeValidator.isString(category):
             raise ValueError('wordRepository::getWordCount: expected a string for [category], got', type(category), '.')
-        if not isinstance(word, str):
+        if not TypeValidator.isString(word):
             raise ValueError('wordRepository::getWordCount: expected a string for [word], got', type(word),' .')
 
         if category not in self.data:
@@ -66,7 +66,7 @@ class WordRepository():
 
     # returns dictionary of words and occurences
     def getAllCategoryWords(self, category):
-        if not isinstance(category, str):
+        if not TypeValidator.isString(category):
             raise ValueError('wordRepository::getCategoryWords: expected a string for [category], got', type(category), '.')
 
         if category not in self.data:
@@ -83,7 +83,7 @@ class WordRepository():
         else:
             self.urls.add(url)
 
-        if not isinstance(category, str):
+        if not TypeValidator.isString(category):
             raise ValueError('wordRepository::appendWordsInBulk: expected a string for [category], got', type(category), '.')
 
         if category not in self.data:

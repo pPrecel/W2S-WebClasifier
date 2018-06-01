@@ -1,3 +1,5 @@
+from Utilities import TypeValidator
+from Utilities import Utility
 import operator
 
 class WebClassifier:
@@ -8,30 +10,6 @@ class WebClassifier:
         self.__images = {}
 
     #private methods
-    def __isTabOfDictsOfInts(self, checkedData, lenOfFirstTab): # sprawdzanie czy dane to tablica slownikow tablic intow
-        #Bo najwazniejsza jest prosta i klarowna reprezentacja danych :)
-        try:
-            if not isinstance(checkedData,list) or not len(checkedData) == lenOfFirstTab:
-                raise Exception
-            for elem in checkedData:
-                if not isinstance(elem, dict):
-                    raise Exception
-                for key in elem:
-                    if not isinstance(elem[key], int) or not isinstance(key, str):
-                        raise Exception
-        except Exception:
-            return False
-
-        return True
-
-    def __isTabOfInts(self, inTab):
-        if not isinstance(inTab, list):
-            return False
-        for it in inTab:
-            if not isinstance(it, int):
-                return False
-        return True
-
     def __sumDicts(self, inputTab): #przemienia tablice slownikow w slownik tablic
         newDict = {}
         for dic in inputTab:
@@ -45,24 +23,8 @@ class WebClassifier:
                     newDict[key].append(0)
         return newDict
 
-    def __isDictOfInt(self, checkedData):
-        if not isinstance(checkedData, dict):
-            print('nie bo nie jest dictem')
-            return False
-        for key in checkedData:
-            if not isinstance(checkedData[key], int):
-                print('nie bo ',checkedData[key],'nie jest intem')
-                return False
-        return True
-
     def __getValue(self, inputDict, word, i):
         return inputDict[word] * (self.__words[word][i] / sum(self.__words[word]))
-
-    def __sumOfIntsInDict(self,inputDict):
-        sum = 0
-        for word in inputDict:
-            sum += inputDict[word]
-        return sum
 
     def __sumOfIntsInDictsOfTabs(self, inputDict, iterator):
         sum = 0
@@ -124,13 +86,13 @@ class WebClassifier:
 
     #public methods
     def loadData(self, dictOfWords : list, dictOfClasses : dict, tabOfImageInfo : list):
-        if not isinstance(dictOfClasses, dict):
+        if not TypeValidator.isDict(dictOfClasses):
             raise Exception('Bad types of input data (1). dictOfWords must be a dict')
-        if not self.__isTabOfDictsOfInts(list(dictOfWords), len(dictOfClasses)):
+        if not TypeValidator.isTabOfDictsOfInts(list(dictOfWords), len(dictOfClasses)):
             raise Exception('Bad types of input data (2). dictOfWords must be a tab of dicts of ints and have this same len like tabOfClasses')
-        if not self.__isDictOfInt(dictOfClasses):
+        if not TypeValidator.isDictOfInt(dictOfClasses):
             raise Exception('Bad types of input data (3). dictOfClasses must be a dict of ints')
-        if not self.__isTabOfInts(tabOfImageInfo):
+        if not TypeValidator.isTabOfInts(tabOfImageInfo):
             raise Exception('Bad types of input data (4). tabOfImageInfo must be a tab of ints')
 
         self.clear()

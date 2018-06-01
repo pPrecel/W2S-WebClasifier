@@ -1,7 +1,6 @@
 import pandas
 import math
 
-
 class ExcelReader:
 
     # returns dictionary of pairs (url, category)
@@ -30,7 +29,6 @@ class ExcelReader:
 
         # foreach loaded pair
         for i in range(len(data.values)):
-
 
             # check
             if ExcelReader.isLoadedWordInvalid(links[i]):
