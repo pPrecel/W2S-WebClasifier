@@ -5,11 +5,6 @@ import urllib3
 import requests
 import re
 
-#1.0    initial release         Init
-#1.1    Facebook                Social
-#1.2    images and videos       IMG
-#1.3    wrapped in class        Classic
-
 class Scrapper:
 
     def __init__(self):
@@ -17,18 +12,6 @@ class Scrapper:
 
     #load BeautifulSoup from url
     def loadSoup(self, url, addBrowserHeaders=True, parser='html.parser'):
-
-        #fake header to bypass some websites' security
-        fakeUserAgent = 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0'
-
-        if addBrowserHeaders:
-            headers = requests.utils.default_headers()
-            headers.update({
-                'User-Agent': fakeUserAgent,
-            })
-        else:
-            headers = None
-
         http = urllib3.PoolManager()
         response = http.request('GET', url)
         return bs4.BeautifulSoup(response.data, parser)
@@ -187,8 +170,8 @@ class Scrapper:
 
         if verbose:
             print(url)
-        soup = self.loadSoup(url)
 
+        soup = self.loadSoup(url)
         soup = self.sanitize(soup)
         #split strings by spaces and newlines - spltting by '/' maybe? EDIT or '='?
         rawStrings = self.splitStrings(soup)
@@ -201,6 +184,4 @@ class Scrapper:
 
         imageSoup = self.loadSoup(url, 'lxml')
         return pairs, self.getImagesCount(imageSoup)
-
-    urllib3.disable_warnings()
 
