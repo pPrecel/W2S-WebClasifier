@@ -1,6 +1,7 @@
 import pandas
 import math
 
+
 class ExcelReader:
 
     # returns dictionary of pairs (url, category)
@@ -23,7 +24,6 @@ class ExcelReader:
         except KeyError:
             print('ExcelReader::read: invalid Excel file! We need "link" and "category" columns!')
             return dict()
-
 
         pairs = dict()
 
@@ -58,5 +58,6 @@ class ExcelReader:
 
         return pairs
 
+    # when the cell is empty, pandas returns nan
     def isLoadedWordInvalid(word):
         return isinstance(word, float) and math.isnan(word)

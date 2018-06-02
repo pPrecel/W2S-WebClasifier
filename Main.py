@@ -28,7 +28,7 @@ clf = WebClassifier()
 clf.loadData(pages, classes, list(images.values()))
 clf.saveToDataToFile('wyniki.txt')
 
-site = 'http://dawidpolap.pl/'
+site = 'https://likegeeks.com/python-gui-examples-tkinter-tutorial/'
 print('predicting category for ',site,'...')
 data = WebScrapper.Scrapper().scrapPage(site)
 clf.predict(data[0], data[1], addToData=True) #<---- ta 20, to nic innego, jak ilosc zdjec na tej strinie
