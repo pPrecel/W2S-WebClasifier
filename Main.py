@@ -31,7 +31,6 @@ clf.saveToDataToFile('wyniki.txt')
 site = 'https://likegeeks.com/python-gui-examples-tkinter-tutorial/'
 print('predicting category for ',site,'...')
 data = WebScrapper.Scrapper().scrapPage(site)
-clf.predict(data[0], data[1], addToData=True) #<---- ta 20, to nic innego, jak ilosc zdjec na tej strinie
+clf.predict(data[0], data[1])
 
 clf.saveToDataToFile('wyniki2.txt')
-print(classes)
