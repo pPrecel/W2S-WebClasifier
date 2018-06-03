@@ -2,7 +2,6 @@ from stemming.porter2 import stem
 from Utilities import Utility
 import bs4
 import urllib3
-import requests
 import re
 
 class Scrapper:
@@ -72,7 +71,7 @@ class Scrapper:
                    removeNumericStrings=True, stringsRemovalThreshold=0.1,
                    removeLinks=True,
                    toLowerCase=True,
-                   stripTrailingPunctuation=True, punctuation ='|&<>\“”"_=:!.,()?…\/{}][;:',  #todo - replace instead of strip?
+                   stripTrailingPunctuation=True, punctuation ='|&<>\“”"_=:!.,()?…\/{}][;:',
                    removeEmptyEntries=True,
                    removeShortEntries=True, minEntryLength=2,
                    removeLongEntries=False, maxEntryLength=20,
@@ -173,7 +172,7 @@ class Scrapper:
 
         soup = self.loadSoup(url)
         soup = self.sanitize(soup)
-        #split strings by spaces and newlines - spltting by '/' maybe? EDIT or '='?
+        #split strings by spaces and newlines
         rawStrings = self.splitStrings(soup)
         #apply filters
         processedStrings = self.preprocess( rawStrings, removeLongEntries=True )

@@ -5,10 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2c5d13a1-7f0a-4519-b7eb-f3da4cdcec93" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Classifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/Classifier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Utilities.py" beforeDir="false" afterPath="$PROJECT_DIR$/Utilities.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebScrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/WebScrapper.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -83,11 +80,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Classifier.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Classifier.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Classifier.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="104">
-              <caret line="91" column="60" selection-start-line="91" selection-start-column="60" selection-end-line="91" selection-end-column="60" />
+              <caret line="91" column="58" lean-forward="true" selection-start-line="91" selection-start-column="58" selection-end-line="91" selection-end-column="58" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -95,11 +92,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WebScrapper.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="WebScrapper.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/WebScrapper.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1763">
-              <caret line="187" selection-start-line="187" selection-end-line="187" />
+            <state relative-caret-position="45">
+              <caret line="174" column="45" selection-start-line="174" selection-start-column="45" selection-end-line="174" selection-end-column="45" />
               <folding>
                 <element signature="e#0#33#0" expanded="true" />
               </folding>
@@ -130,7 +127,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>scrapFromNet</find>
       <find>loaded</find>
       <find>DataLoader::scrapMissing</find>
       <find>loadData</find>
@@ -160,6 +156,7 @@
       <find>Exception</find>
       <find>exception</find>
       <find>dra</find>
+      <find>todo</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -193,12 +190,12 @@
         <option value="$PROJECT_DIR$/DataLoader.py" />
         <option value="$PROJECT_DIR$/TypeValidator.py" />
         <option value="$PROJECT_DIR$/TypeValidation.py" />
-        <option value="$PROJECT_DIR$/WebScrapper.py" />
         <option value="$PROJECT_DIR$/WordRepository.py" />
         <option value="$PROJECT_DIR$/ExcelReader.py" />
         <option value="$PROJECT_DIR$/Main.py" />
         <option value="$PROJECT_DIR$/Utilities.py" />
         <option value="$PROJECT_DIR$/Classifier.py" />
+        <option value="$PROJECT_DIR$/WebScrapper.py" />
       </list>
     </option>
   </component>
@@ -399,11 +396,12 @@
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.32908705" />
-      <window_info active="true" anchor="right" id="Run" order="6" visible="true" weight="0.4609375" />
+      <window_info anchor="right" id="Run" order="6" visible="true" weight="0.4609375" />
       <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.61457235" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13072917" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13072917" />
       <window_info anchor="bottom" id="Docker" order="12" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="bottom" id="Find" order="2" weight="0.3284055" />
       <window_info anchor="right" id="SciView" order="4" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -427,7 +425,6 @@
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" weight="0.32946146" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Find" order="2" weight="0.3284055" />
       <window_info anchor="bottom" id="Terminal" order="11" />
       <window_info anchor="bottom" id="Concurrent Activities Diagram" order="0" weight="0.32946146" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.32908705" />
@@ -445,7 +442,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/moznawywalic.py" />
     <entry file="file://$PROJECT_DIR$/babilon.py" />
     <entry file="file://$PROJECT_DIR$/smietki/obrazki.py" />
     <entry file="file://$PROJECT_DIR$/scrapy.py" />
@@ -525,16 +521,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/DEETE THIS MOTHERFUCKER.py" />
-    <entry file="file://$PROJECT_DIR$/WebScrapper.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1763">
-          <caret line="187" selection-start-line="187" selection-end-line="187" />
-          <folding>
-            <element signature="e#0#33#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ExcelReader.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="760">
@@ -590,9 +576,26 @@
     <entry file="file://$PROJECT_DIR$/Classifier.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="104">
-          <caret line="91" column="60" selection-start-line="91" selection-start-column="60" selection-end-line="91" selection-end-column="60" />
+          <caret line="91" column="58" lean-forward="true" selection-start-line="91" selection-start-column="58" selection-end-line="91" selection-end-column="58" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wyniki2.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="20870" selection-start-line="20870" selection-end-line="20870" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebScrapper.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="174" column="45" selection-start-line="174" selection-start-column="45" selection-end-line="174" selection-end-column="45" />
+          <folding>
+            <element signature="e#0#33#0" expanded="true" />
           </folding>
         </state>
       </provider>
