@@ -6,9 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="2c5d13a1-7f0a-4519-b7eb-f3da4cdcec93" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Categories.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/Categories.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ExcelReader.py" beforeDir="false" afterPath="$PROJECT_DIR$/ExcelReader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Classifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/Classifier.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Utilities.py" beforeDir="false" afterPath="$PROJECT_DIR$/Utilities.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -27,17 +27,29 @@
     <SUITE FILE_PATH="coverage/cwiczeniaZML$loaded.coverage" NAME="loaded Coverage Results" MODIFIED="1526891372806" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/W2S_WebClasifier$DEETE_THIS_MOTHERFUCKER.coverage" NAME="DEETE THIS MOTHERFUCKER Coverage Results" MODIFIED="1527873483170" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/W2S_WebClasifier$ReadExcel.coverage" NAME="ReadExcel Coverage Results" MODIFIED="1526923779989" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/W2S_WebClasifier$Main.coverage" NAME="Main Coverage Results" MODIFIED="1527886811123" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/W2S_WebClasifier$Main.coverage" NAME="Main Coverage Results" MODIFIED="1528028905505" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/cwiczeniaZML$Main__1_.coverage" NAME="Main (1) Coverage Results" MODIFIED="1526891833195" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/WAWA" />
     <SUITE FILE_PATH="coverage/cwiczeniaZML$serializationTests.coverage" NAME="serializationTests Coverage Results" MODIFIED="1526844197569" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="Main.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Main.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="178">
+              <caret line="29" column="8" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="8" />
+              <folding>
+                <element signature="e#0#36#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="WordRepository.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WordRepository.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="284">
-              <caret line="93" selection-start-line="93" selection-end-line="93" />
+            <state relative-caret-position="184">
+              <caret line="69" column="66" selection-start-line="69" selection-start-column="66" selection-end-line="69" selection-end-column="66" />
               <folding>
                 <element signature="e#0#17#0" expanded="true" />
               </folding>
@@ -48,8 +60,37 @@
       <file leaf-file-name="Utilities.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Utilities.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="40" selection-start-line="10" selection-start-column="40" selection-end-line="10" selection-end-column="40" />
+            <state relative-caret-position="153">
+              <caret line="35" selection-start-line="35" selection-end-line="35" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DataLoader.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/DataLoader.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="244">
+              <caret line="62" selection-start-line="62" selection-end-line="62" />
+              <folding>
+                <element signature="e#0#29#0" expanded="true" />
+                <element signature="e#178#358#0" />
+                <element signature="e#452#855#0" />
+                <element signature="e#977#1290#0" />
+                <element signature="e#1372#2211#0" />
+                <element signature="e#4051#4202#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Classifier.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Classifier.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="104">
+              <caret line="91" column="60" selection-start-line="91" selection-start-column="60" selection-end-line="91" selection-end-column="60" />
+              <folding>
+                <element signature="e#0#35#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -66,7 +107,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ExcelReader.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ExcelReader.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ExcelReader.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="760">
@@ -89,9 +130,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find />
-      <find>printWords</find>
-      <find>len(v</find>
       <find>scrapFromNet</find>
       <find>loaded</find>
       <find>DataLoader::scrapMissing</find>
@@ -119,6 +157,9 @@
       <find>get</find>
       <find>if not</find>
       <find>articlesCounts</find>
+      <find>Exception</find>
+      <find>exception</find>
+      <find>dra</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -152,12 +193,12 @@
         <option value="$PROJECT_DIR$/DataLoader.py" />
         <option value="$PROJECT_DIR$/TypeValidator.py" />
         <option value="$PROJECT_DIR$/TypeValidation.py" />
-        <option value="$PROJECT_DIR$/Classifier.py" />
-        <option value="$PROJECT_DIR$/Utilities.py" />
         <option value="$PROJECT_DIR$/WebScrapper.py" />
         <option value="$PROJECT_DIR$/WordRepository.py" />
-        <option value="$PROJECT_DIR$/Main.py" />
         <option value="$PROJECT_DIR$/ExcelReader.py" />
+        <option value="$PROJECT_DIR$/Main.py" />
+        <option value="$PROJECT_DIR$/Utilities.py" />
+        <option value="$PROJECT_DIR$/Classifier.py" />
       </list>
     </option>
   </component>
@@ -358,24 +399,38 @@
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.32908705" />
-      <window_info anchor="right" id="Run" order="6" weight="0.4609375" />
-      <window_info anchor="bottom" id="Terminal" order="11" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13072917" />
+      <window_info active="true" anchor="right" id="Run" order="6" visible="true" weight="0.4609375" />
+      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.61457235" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13072917" />
       <window_info anchor="bottom" id="Docker" order="12" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="right" id="SciView" order="4" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39915523" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39915523" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Docker" order="12" show_stripe_button="false" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13072917" />
+      <window_info anchor="right" id="SciView" order="4" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info anchor="right" id="Run" order="6" weight="0.4609375" />
       <window_info anchor="right" id="Data View" order="5" />
+      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Message" order="1" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" weight="0.32946146" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Find" order="2" weight="0.3284055" />
+      <window_info anchor="bottom" id="Terminal" order="11" />
       <window_info anchor="bottom" id="Concurrent Activities Diagram" order="0" weight="0.32946146" />
+      <window_info anchor="bottom" id="Python Console" order="10" weight="0.32908705" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -386,7 +441,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="40" />
+      <option name="time" value="41" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -470,53 +525,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/DEETE THIS MOTHERFUCKER.py" />
-    <entry file="file://$PROJECT_DIR$/DataLoader.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2125">
-          <caret line="130" column="37" selection-start-line="130" selection-start-column="37" selection-end-line="130" selection-end-column="37" />
-          <folding>
-            <element signature="e#0#29#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Utilities.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="40" selection-start-line="10" selection-start-column="40" selection-end-line="10" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" selection-start-line="25" selection-end-line="25" />
-          <folding>
-            <element signature="e#0#36#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WordRepository.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
-          <caret line="93" selection-start-line="93" selection-end-line="93" />
-          <folding>
-            <element signature="e#0#17#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Classifier.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="28" column="21" selection-start-line="28" selection-start-column="10" selection-end-line="28" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/WebScrapper.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1763">
@@ -533,6 +541,58 @@
           <caret line="60" column="48" selection-start-line="60" selection-start-column="48" selection-end-line="60" selection-end-column="48" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WordRepository.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="69" column="66" selection-start-line="69" selection-start-column="66" selection-end-line="69" selection-end-column="66" />
+          <folding>
+            <element signature="e#0#17#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DataLoader.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="244">
+          <caret line="62" selection-start-line="62" selection-end-line="62" />
+          <folding>
+            <element signature="e#0#29#0" expanded="true" />
+            <element signature="e#178#358#0" />
+            <element signature="e#452#855#0" />
+            <element signature="e#977#1290#0" />
+            <element signature="e#1372#2211#0" />
+            <element signature="e#4051#4202#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Utilities.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="35" selection-start-line="35" selection-end-line="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="29" column="8" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#36#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Classifier.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="104">
+          <caret line="91" column="60" selection-start-line="91" selection-start-column="60" selection-end-line="91" selection-end-column="60" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
           </folding>
         </state>
       </provider>

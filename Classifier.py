@@ -89,7 +89,7 @@ class WebClassifier:
 
     def predict(self, inputWords, inputImages, addToData=False): # główna metoda, która odpowiada za przewidywanie stron
         predOfWords = self.__predict(inputWords, inputImages)
-        self.printFormattedScores(predOfWords, dramatic=False)
+        self.printFormattedScores(predOfWords, dramatic=True)
 
         if(addToData==True):
             classResult = max(predOfWords.items(), key=operator.itemgetter(1))[0]

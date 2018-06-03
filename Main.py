@@ -20,10 +20,6 @@ pages, classes, images = loader.getPagesClassesAndImagesCount()
 # save repo for the next time
 loader.saveToJSON('repo.json')
 
-#---------
-#imagePretender = [int(randint(50,500)) for x in range(len(classes))] #WHAT IF I SAY THAT I NEVER SURRENDER
-#---------
-
 clf = WebClassifier()
 clf.loadData(pages, classes, list(images.values()))
 clf.saveToDataToFile('wyniki.txt')
