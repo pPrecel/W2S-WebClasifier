@@ -73,7 +73,7 @@ class DataLoader:
             print('DataLoader::scrapFromNet: started loading words')
 
         workQueue = queue.Queue(maxsize=0)
-        num_threads = min(64, len(flat))
+        num_threads = min(16, len(flat))
 
         for i in range(len(flat)):
             workQueue.put((i,flat[i]))

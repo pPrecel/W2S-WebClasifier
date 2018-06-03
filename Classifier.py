@@ -1,5 +1,4 @@
 from Utilities import TypeValidator
-from Utilities import Utility
 import operator
 
 class WebClassifier:
@@ -91,7 +90,7 @@ class WebClassifier:
         predOfWords = self.__predict(inputWords, inputImages)
         self.printFormattedScores(predOfWords, dramatic=True)
 
-        if(addToData==True):
+        if addToData == True:
             classResult = max(predOfWords.items(), key=operator.itemgetter(1))[0]
             self.addData(inputWords, inputImages, classResult)
 
@@ -139,26 +138,24 @@ class WebClassifier:
             print(x[0], ' :  ', round(x[1] / s * 100, 2), '%')
 
     def saveToDataToFile(self, filepath): # zapisuje bazę danych do pliku txt
-        file = open(filepath, 'w')
+        with open(filepath, 'w') as file:
 
-        file.write('classes:\n')
-        for key, value in self.__classes.items():
-            file.write(key+':'+str(value)+'\n')
-        file.write('\n')
-
-        file.write('images:\n')
-        for key, value in self.__images.items():
-            file.write(key+':'+str(value)+'\n')
-        file.write('\n')
-
-        file.write('worlds:\n')
-        for key, value in self.__words.items():
-            try:
-                file.write(str(key))
-            except:
-                file.write('ERROR')
-            for elem in value:
-                file.write(' '+str(elem))
+            file.write('classes:\n')
+            for key, value in self.__classes.items():
+                file.write(key+':'+str(value)+'\n')
             file.write('\n')
 
-        file.close()
+            file.write('images:\n')
+            for key, value in self.__images.items():
+                file.write(key+':'+str(value)+'\n')
+            file.write('\n')
+
+            file.write('worlds:\n')
+            for key, value in self.__words.items():
+                try:
+                    file.write(str(key))
+                except:
+                    file.write('ERROR')
+                for elem in value:
+                    file.write(' '+str(elem))
+                file.write('\n')
