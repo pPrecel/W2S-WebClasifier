@@ -1,0 +1,21 @@
+version: "2.1"
+
+services:
+  classifier:
+    image: pprecel/web-classifier:latest
+    container_name: classifier
+    restart: always
+    ports:
+      - "5050:5050"
+    volumes:
+      - ./utils/Categories.xlsx:/app/Categories.xlsx
+      - ./utils/repo.json:/app/repo.json
+  dns:
+    image: pprecel/web-classifier-dns:latest
+    container_name: dns
+    ports:
+      - "53:53"
+    environment:
+      - CONFIG_PATH=/app/config.yaml
+    volumes:
+      - ./utils/config.yaml:/app/config.yaml
