@@ -1,5 +1,10 @@
 # W2S-WEBCLAS(S)IFIER
 
+## Prerequisites
+1. [nslookup](https://en.wikipedia.org/wiki/Nslookup)
+2. [docker-compose](https://docs.docker.com/compose/)
+## Running
+
 1. Run services:
 ```bash
 make run
