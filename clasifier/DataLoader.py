@@ -5,7 +5,6 @@ import queue
 import threading
 import time
 
-
 class DataLoader:
 
     def __init__(self, verbose=False):

@@ -88,11 +88,12 @@ class WebClassifier:
 
     def predict(self, inputWords, inputImages, addToData=False): # główna metoda, która odpowiada za przewidywanie stron
         predOfWords = self.__predict(inputWords, inputImages)
-        self.printFormattedScores(predOfWords, dramatic=True)
 
         if addToData == True:
             classResult = max(predOfWords.items(), key=operator.itemgetter(1))[0]
             self.addData(inputWords, inputImages, classResult)
+
+        return predOfWords
 
     def addData(self, inputWords,inputImages, inputClass): # dodaje jedną stronę do bazy stron (bez przewidywania)
         if inputClass in self.__classes:
@@ -136,6 +137,21 @@ class WebClassifier:
         sortedSc = sorted(predOfWords.items(), key=operator.itemgetter(1), reverse=True)
         for x in sortedSc:
             print(x[0], ' :  ', round(x[1] / s * 100, 2), '%')
+    
+    def getFormattedScores(self, predOfWords, dramatic=True): # zwraca dane wyjściowe w postaci dictionary
+
+        if dramatic:
+            for key in predOfWords:
+                predOfWords[key] **= 2;
+
+        s = sum(predOfWords.values())
+        sortedSc = sorted(predOfWords.items(), key=operator.itemgetter(1), reverse=True)
+        dictionary = {}
+        for x in sortedSc:
+            dictionary[x[0]] = round(x[1] / s * 100, 2)
+
+        return dictionary
+
 
     def saveToDataToFile(self, filepath): # zapisuje bazę danych do pliku txt
         with open(filepath, 'w') as file:
