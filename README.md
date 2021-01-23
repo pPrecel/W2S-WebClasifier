@@ -24,4 +24,4 @@ Name:   www.redtube.com
 Address: 66.254.114.238   <- this is the IP address of the Oracle website
 ```
 
-3. Note that for 'www.redtube.com' request, the server returned the IP address of the Oracle website (bad boy!)
+3. Note that for the redtube request, the server returned the IP address of the Oracle website (bad boy!)
