@@ -2,7 +2,6 @@ package main
 
 import (
 	"github.com/miekg/dns"
-	"github.com/pPrecel/W2S-WebClasifier/dns/internal/config"
 	"github.com/pPrecel/W2S-WebClasifier/dns/internal/handler"
 	"github.com/pPrecel/W2S-WebClasifier/dns/internal/types"
 	log "github.com/sirupsen/logrus"
