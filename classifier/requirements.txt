@@ -1,0 +1,9 @@
+pandas
+stemming
+bs4
+urllib3
+jsonpickle
+xlrd
+openpyxl
+flask
+gunicorn
