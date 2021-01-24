@@ -6,7 +6,6 @@ import (
 	"github.com/pPrecel/W2S-WebClasifier/dns/internal/classifier"
 	"github.com/pPrecel/W2S-WebClasifier/dns/internal/types"
 	log "github.com/sirupsen/logrus"
-	"strings"
 )
 
 func BuildDNSHandler(config *types.Config) func(w dns.ResponseWriter, req *dns.Msg) {
@@ -18,9 +17,6 @@ func BuildDNSHandler(config *types.Config) func(w dns.ResponseWriter, req *dns.M
 
 		for i, question := range req.Question {
 			name := question.Name
-			if parts := strings.Split(question.Name, "."); len(parts) > 1 {
-				name = strings.Join(parts[len(parts)-2:], ".")
-			}
 
 			log.Infof("%d question for %s", i, name)
 
