@@ -23,7 +23,7 @@ services:
     volumes:
       - ./utils/config.yaml:/app/config.yaml
   website:
-    image: pprecel/classifier-website:latest
+    image: pprecel/web-classifier-website:latest
     container_name: website
     depends_on: 
       - classifier
