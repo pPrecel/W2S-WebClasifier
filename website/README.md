@@ -1,3 +1,3 @@
 # Please god forgive me...
 
-This website was only create because of development purposes. Please ignore this folder... Sadly I'm not a front-developer :C
+This website was only create because of development purposes (and to have some fun). Please ignore this folder... Sadly I'm not a front-developer :C
