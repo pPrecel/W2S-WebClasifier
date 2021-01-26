@@ -5,6 +5,7 @@ import DataLoader
 
 #server utils
 from flask import Flask
+from flask_cors import CORS, cross_origin
 from flask import request
 import json
 
@@ -31,8 +32,11 @@ clf.loadData(pages, classes, list(images.values()))
 
 #init flask app
 app = Flask(__name__)
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 @app.route('/')
+@cross_origin()
 def hello_world():
     site = request.args.get('siteUrl')
     print('predicting category for ', site, '...')

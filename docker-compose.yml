@@ -6,16 +6,26 @@ services:
     container_name: classifier
     restart: always
     ports:
-      - "5050:5050"
+      - "127.0.0.1:5050:5050/tcp"
     volumes:
       - ./utils/Categories.xlsx:/app/Categories.xlsx
       - ./utils/repo.json:/app/repo.json
   dns:
     image: pprecel/web-classifier-dns:latest
     container_name: dns
+    depends_on: 
+      - classifier # for better http get
     ports:
-      - "53:53"
+      - "53:53/tcp"
+      - "53:53/udp"
     environment:
       - CONFIG_PATH=/app/config.yaml
     volumes:
       - ./utils/config.yaml:/app/config.yaml
+  website:
+    image: pprecel/classifier-website:latest
+    container_name: website
+    depends_on: 
+      - classifier
+    ports: 
+      - "80:80"

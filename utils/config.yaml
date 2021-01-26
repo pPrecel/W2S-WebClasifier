@@ -1,4 +1,4 @@
-classifierAddressFormat: "http://localhost:5050?siteUrl=%s"
+classifierAddressFormat: "http://classifier:5050?siteUrl=%s"
 pornMaxValue: 30
 politicsMaxValue: 25
 swapIpAddress: "66.254.114.238"

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://www.joerezendes.com/projects/Woah.css/woah.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    function clear (){
+        document.getElementById("sadsad").style.display = 'none';
+        document.getElementById("happyhappy").style.display = 'none';
+        document.getElementById("outputtext").style.display = 'none';
+        document.getElementById("outputjson").style.display = 'none';
+    }
+
+    function wait(){
+        document.getElementById("outputtext").style.display = 'inline';
+        document.getElementById("outputtext").innerHTML = "Waiting...";
+    }
+
+    function richClassifier() {
+        clear();
+        wait();
+
+        var url = "http://localhost:5050/?siteUrl="
+        .concat(document.getElementById("reader").value)
+        .replace(/\s/g, '');
+        
+        fetch(url).then(res => res.json()).then((res) => {
+            document.getElementById("outputtext").innerHTML = "Response for " + document.getElementById("reader").value.replace(/\s/g, '');
+            document.getElementById("outputjson").innerHTML = JSON.stringify(res, null, 2);
+            document.getElementById("outputjson").style.display = 'inline';
+            
+            if (res.Porn > 20.0 ) {
+                document.body.style.background = "radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 66%)";
+                document.getElementById("sadsad").style.display = 'inline';
+            } else if (res.Politics > 20.0) {
+                document.body.style.background = "radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 66%)";
+                document.getElementById("sadsad").style.display = 'inline';
+            } else {
+                document.body.style.background = "radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(81,252,70,1) 66%)";
+                document.getElementById("happyhappy").style.display = 'inline'
+            }
+        });
+        
+    }
+  </script>
+  <style>
+      body {
+          /* background-color: #3f5efb; */
+          background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(59,15,103,1) 66%);
+      }
+      #reader {
+        border-radius: 10%;
+        width: 400px;
+        box-shadow: red;
+      }
+      #outputtext {
+        display: none;
+      }
+      #outputjson {
+        display: none;
+      }
+      #sadsad {
+        display: none;
+      }
+      #happyhappy {
+        display: none;
+      }
+  </style>
+</head>
+<body>
+
+    <div class="d-flex justify-content-center btn btn-warning" >
+        <h1 class="mt-3" style="font-size: 500%; ">
+            HELLO CLASSIFIER
+        </h1>
+    </div>
+
+    <div class="d-flex  justify-content-center mt-5">
+    <input type="text" id="reader" name="w3review" value="www.nytimes.com" style="text-align: center;"></input>
+    </div>
+    <div class="d-flex justify-content-center mt-5">
+        <button type="button" class="btn btn-warning" onclick="richClassifier()">
+        Click me to investigate any website
+        </button>
+    </div>
+
+    <div class="d-flex justify-content-center mt-5">
+        <img id="happyhappy" class="woah flyIn" src="happyhappy.png" width="300" height="300">
+    </div>
+
+    <div class="d-flex justify-content-center mt-5">
+        <img id="sadsad" class="woah shaker" src="sadsad.png" width="300" height="300">
+    </div>
+
+    <div class="d-flex justify-content-center mt-2">
+        <h1 id="outputtext">
+            Waiting...
+        </h1>
+    </div>
+
+    <div class="d-flex justify-content-center mt-5">
+        <text id="outputjson" name="w3review" rows="11" cols="25">
+            Waiting...
+        </text>
+    </div>
+
+</body>
+</html>

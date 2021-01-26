@@ -6,4 +6,5 @@ jsonpickle
 xlrd
 openpyxl
 flask
+flask_cors
 gunicorn
