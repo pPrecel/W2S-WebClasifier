@@ -27,23 +27,24 @@ func BuildDNSHandler(config *types.Config) func(w dns.ResponseWriter, req *dns.M
 			if err != nil {
 				log.Errorf("while trying to rich response from classifier: %s", err.Error())
 				if handlerError(w, req, err) != nil {
-					log.Panicf("while trying to handle error: %s", err.Error())
+					log.Errorf("while trying to handle error: %s", err.Error())
+					continue
 				}
-				return
+				continue
 			}
 
-			if resp.Politics > config.PoliticsMaxValue ||
-				resp.Porn > config.PornMaxValue {
+			if resp.Politics > config.PoliticsMaxValue || resp.Porn > config.PornMaxValue {
+				log.Infof("Address %s is not the best for you children. We better will swap it with this ip address: %s", name, config.SwapIpAddress)
 				rr, err := dns.NewRR(fmt.Sprintf("%s A %s", name, config.SwapIpAddress))
 				if err != nil {
 					log.Errorf("while trying to write swapIpAddress (%s): %s", config.SwapIpAddress, err.Error())
 					if handlerError(w, req, err) != nil {
-						log.Panicf("while trying to handle error: %s", err.Error())
+						log.Errorf("while trying to handle error: %s", err.Error())
 					}
-					break
+					continue
 				}
 				m.Answer = append(m.Answer, rr)
-				break
+				continue
 			}
 
 			r := config.DNSServers.ChooseRandom()
@@ -51,9 +52,10 @@ func BuildDNSHandler(config *types.Config) func(w dns.ResponseWriter, req *dns.M
 			if err != nil {
 				log.Errorf("while trying to rich DNS server (%s): %s", r, err.Error())
 				if handlerError(w, req, err) != nil {
-					log.Panicf("while trying to handle error: %s", err.Error())
+					log.Errorf("while trying to handle error: %s", err.Error())
+					continue
 				}
-				break
+				continue
 			}
 
 			log.Infof("For request: %s, found: %+v", name, hosts)
@@ -62,15 +64,16 @@ func BuildDNSHandler(config *types.Config) func(w dns.ResponseWriter, req *dns.M
 			if err != nil {
 				log.Errorf("while trying to write new RR (%s): %s", rrFormat, err.Error())
 				if handlerError(w, req, err) != nil {
-					log.Panicf("while trying to handle error: %s", err.Error())
+					log.Errorf("while trying to handle error: %s", err.Error())
+					continue
 				}
-				break
+				continue
 			}
 			m.Answer = append(m.Answer, rr)
 		}
 
 		w.WriteMsg(m)
-		log.Infoln("Request connection ended")
+		log.Infoln("Request connection ended with message: %+v", m.Answer)
 	}
 }
 
